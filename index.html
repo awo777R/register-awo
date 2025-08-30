@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Actividad: Cadenas y Objeto Math en JavaScript</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#ffffff; --ink:#2b2b2b; --accent:#2563eb; --ink-soft:#555;
+    }
+    body{
+      margin:0; font-family:system-ui, Arial, sans-serif; background:var(--bg); color:var(--ink);
+      line-height:1.5; padding:24px;
+    }
+    .wrap{max-width:1000px; margin:0 auto; display:grid; gap:24px;}
+    .card{
+      background:var(--card); border-radius:16px; padding:20px;
+      box-shadow:0 6px 20px rgba(0,0,0,.06);
+    }
+    h1{margin:0 0 4px 0; font-size:clamp(22px,4vw,30px)}
+    h2{margin:0 0 12px 0; font-size:clamp(18px,3vw,22px)}
+    ol{padding-left:18px}
+    code, pre{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .btn{
+      background:var(--accent); color:#fff; border:none; border-radius:10px;
+      padding:10px 14px; font-weight:600; cursor:pointer;
+    }
+    .btn:active{transform:translateY(1px)}
+    .row{display:grid; gap:16px}
+    @media(min-width:900px){ .row{grid-template-columns:1.2fr .8fr} }
+    pre{
+      background:#0f172a; color:#d1fae5; padding:14px; border-radius:12px; overflow:auto;
+    }
+    .muted{color:var(--ink-soft)}
+    details summary{cursor:pointer; font-weight:600}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="card">
+      <h1>Actividad Práctica – Registro de Estudiantes</h1>
+      <p class="muted">Manipulación de cadenas y uso del objeto <code>Math</code> en JavaScript.</p>
+    </header>
+
+    <section class="card">
+      <h2>Instrucciones</h2>
+      <p>Imagina que desarrollas una función para gestionar un sistema de registro de estudiantes. Completa los siguientes requerimientos usando métodos de cadenas y el objeto <code>Math</code>:</p>
+      <ol>
+        <li>Crea una variable <code>nombreCompleto</code> con el nombre de un estudiante (p. ej., <code>"Carlos Perez Gomez"</code>).</li>
+        <li>Muestra cuántos caracteres tiene <code>nombreCompleto</code>.</li>
+        <li>Verifica si el nombre incluye el apellido <code>"Perez"</code>.</li>
+        <li>Crea una segunda variable con <code>"Sofia Gutierrez"</code> y únelas (simula dos registros en una sola cadena).</li>
+        <li>Reemplaza <code>"Carlos"</code> por <code>"Juan"</code> en <code>nombreCompleto</code>.</li>
+        <li>Divide <code>nombreCompleto</code> en tres partes (nombre, primer apellido, segundo apellido) y muéstralas por separado.</li>
+        <li>Convierte <code>nombreCompleto</code> a mayúsculas.</li>
+        <li>Elimina espacios innecesarios al inicio y final de una cadena con espacios extra.</li>
+        <li>Genera una calificación aleatoria entre 0 y 100 con <code>Math.random()</code> y redondéala con <code>Math.round()</code>.</li>
+      </ol>
+    </section>
+
+    <section class="row">
+      <article class="card">
+        <h2>Solución de ejemplo (ejecútala)</h2>
+        <p class="muted">Haz clic para ver un ejemplo funcionando. Puedes leer el código debajo.</p>
+        <button class="btn" id="run">Ejecutar actividad</button>
+        <h3>Resultados</h3>
+        <pre id="out">— Sin ejecutar —</pre>
+      </article>
+
+      <aside class="card">
+        <h2>Código de la solución (solo lectura)</h2>
+<pre><code id="code">
+// 1) Variable con nombre completo
+let nombreCompleto = "Carlos Perez Gomez";
+
+// 2) Contar caracteres
+let cantidad = nombreCompleto.length;
+
+// 3) Verificar apellido
+let tienePerez = nombreCompleto.includes("Perez");
+
+// 4) Concatenar registros
+let otroNombre = "Sofia Gutierrez";
+let registros = nombreCompleto.concat(" | ", otroNombre);
+
+// 5) Reemplazar "Carlos" por "Juan"
+let reemplazado = nombreCompleto.replace("Carlos", "Juan");
+
+// 6) Dividir en partes
+let partes = nombreCompleto.split(" "); // ["Carlos","Perez","Gomez"]
+let nombre = partes[0];
+let apellido1 = partes[1];
+let apellido2 = partes[2];
+
+// 7) Mayúsculas
+let mayus = nombreCompleto.toUpperCase();
+
+// 8) Quitar espacios extra
+let crudo = "   Carlos Perez Gomez   ";
+let limpio = crudo.trim();
+
+// 9) Calificación aleatoria (0–100, entero)
+let calificacion = Math.round(Math.random() * 100);
+
+// Salida formateada:
+let salida = "";
+salida += "Nombre Completo: " + nombreCompleto + "\\n";
+salida += "Cantidad de caracteres: " + cantidad + "\\n";
+salida += "Incluye 'Perez'?: " + tienePerez + "\\n";
+salida += "Registros unidos: " + registros + "\\n";
+salida += "Nombre reemplazado: " + reemplazado + "\\n";
+salida += "Nombre: " + nombre + "\\n";
+salida += "Primer apellido: " + apellido1 + "\\n";
+salida += "Segundo apellido: " + apellido2 + "\\n";
+salida += "En mayúsculas: " + mayus + "\\n";
+salida += "Sin espacios extra: '" + limpio + "'\\n";
+salida += "Calificación generada: " + calificacion + "\\n";
+
+document.getElementById("out").textContent = salida;
+</code></pre>
+
+        <details>
+          <summary>Tip para estudiantes</summary>
+          <p>Prueba cambiar los nombres, usar <code>toLowerCase()</code> o dividir por otro separador en <code>split()</code>. ¡Explora!</p>
+        </details>
+      </aside>
+    </section>
+  </div>
+
+  <script>
+    // Al hacer clic, ejecutamos exactamente el código mostrado arriba
+    document.getElementById("run").addEventListener("click", () => {
+      // La "solución" vive como string para que coincida con lo que se ve en el panel
+      const code = `
+      let nombreCompleto = "Carlos Perez Gomez";
+      let cantidad = nombreCompleto.length;
+      let tienePerez = nombreCompleto.includes("Perez");
+      let otroNombre = "Sofia Gutierrez";
+      let registros = nombreCompleto.concat(" | ", otroNombre);
+      let reemplazado = nombreCompleto.replace("Carlos", "Juan");
+      let partes = nombreCompleto.split(" ");
+      let nombre = partes[0];
+      let apellido1 = partes[1];
+      let apellido2 = partes[2];
+      let mayus = nombreCompleto.toUpperCase();
+      let crudo = "   Carlos Perez Gomez   ";
+      let limpio = crudo.trim();
+      let calificacion = Math.round(Math.random() * 100);
+
+      let salida = "";
+      salida += "Nombre Completo: " + nombreCompleto + "\\n";
+      salida += "Cantidad de caracteres: " + cantidad + "\\n";
+      salida += "Incluye 'Perez'?: " + tienePerez + "\\n";
+      salida += "Registros unidos: " + registros + "\\n";
+      salida += "Nombre reemplazado: " + reemplazado + "\\n";
+      salida += "Nombre: " + nombre + "\\n";
+      salida += "Primer apellido: " + apellido1 + "\\n";
+      salida += "Segundo apellido: " + apellido2 + "\\n";
+      salida += "En mayúsculas: " + mayus + "\\n";
+      salida += "Sin espacios extra: '" + limpio + "'\\n";
+      salida += "Calificación generada: " + calificacion + "\\n";
+      document.getElementById("out").textContent = salida;
+      `;
+      // Ejecutar de forma segura en un Function sandbox
+      new Function(code)();
+    });
+  </script>
+</body>
+</html>
